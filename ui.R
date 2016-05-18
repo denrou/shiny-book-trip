@@ -1,6 +1,5 @@
 library(shinydashboard)
 
-
 ui <- dashboardPage(
   dashboardHeader(title = "Carnet de bord"),
   ## Sidebar content
