@@ -1,4 +1,5 @@
 library(shinydashboard)
+library(leaflet)
 
 ui <- dashboardPage(
   dashboardHeader(title = "Carnet de bord"),
@@ -6,7 +7,8 @@ ui <- dashboardPage(
   dashboardSidebar(
     sidebarMenu(
       menuItem("Carte", tabName = "carte", icon = icon("globe")),
-      menuItem("Budget", tabName = "budget", icon = icon("money"))
+      menuItem("Budget", tabName = "budget", icon = icon("money")),
+      menuItem("Planning", tabName = "planning", icon = icon("calendar"))
     )
   ),
   ## Body content
@@ -14,14 +16,7 @@ ui <- dashboardPage(
     tabItems(
       # First tab content
       tabItem(tabName = "carte",
-              fluidRow(
-                box(plotOutput("plot1", height = 250)),
-
-                box(
-                  title = "Controls",
-                  sliderInput("slider", "Number of observations:", 1, 100, 50)
-                )
-              )
+              box(leafletOutput("carte", width = "100%", height = "600px"), width = "100%")
       ),
 
       # Second tab content
